@@ -228,6 +228,8 @@ play.addActionListener(new ButtonListener());
        sadik_panel.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
 
 
+       JLabel sadikC = new JLabel("skdfjlslkdfjlksdfjlskdjflsdkjfsdf");
+        sadik_panel.add(sadikC,BOTTOM_ALIGNMENT);
     }
 
     /**
