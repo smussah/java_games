@@ -27,7 +27,7 @@ public class WarPlan extends JFrame {
     private JLabel sadik, computer, label,
             generalInf;
 
-    private JTextArea sadik_Scores, computer_Scores, winner1S, winner2C;//hold text area object
+    private JTextArea sadik_Scores, computer_Scores, winner1S, winner2C, lastwinnerS, lastwinnerC;//hold text area object
     private JButton play, exit, startNew, changeB;//hold button objects
     private Container panes = null;
     private Color c = new Color(119, 175, 26);//hold main panels color
@@ -168,6 +168,17 @@ play.addActionListener(new ButtonListener());
         middlePanel.add(winner1S);
         winner2C = new JTextArea("");
         middlePanel.add(winner2C);
+
+        lastwinnerC = new JTextArea("");
+        middlePanel.add(lastwinnerC);
+        lastwinnerC.setForeground(Color.BLUE);
+        lastwinnerC.setFont(new Font("default", Font.BOLD, 20));
+        lastwinnerS = new JTextArea("");
+        lastwinnerS.setForeground(Color.BLUE);
+        middlePanel.add(lastwinnerS);
+        lastwinnerS.setFont(new Font("default", Font.BOLD, 20));
+
+
         middlePanel.setBackground(c);
         middlePanel.setBorder(BorderFactory.createLineBorder(c,2));
         winner1S.setFont(new Font("default", Font.BOLD, 15));
@@ -186,6 +197,7 @@ play.addActionListener(new ButtonListener());
         computer_panel = new JPanel();
         computer_panel .setPreferredSize(new Dimension(320, 380));
        computer_Scores = new JTextArea("");
+       computer_Scores.setFont(new Font("default", Font.BOLD, 14));
         computer_panel.add(computer_Scores);
         computer_panel. setVisible(true);
         computer_panel .setBackground(c);
@@ -209,6 +221,7 @@ play.addActionListener(new ButtonListener());
 
 
         sadik_Scores = new JTextArea("");
+        sadik_Scores.setFont(new Font("default", Font.BOLD, 14));
       // sadik_panel. add(sadik_Scores);
         sadik_panel.setBackground(c);
        // sadik_panel.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
@@ -387,7 +400,8 @@ play.addActionListener(new ButtonListener());
                         if (sadiks_battle.get(0).getCardS() > computers_battle.get(0).getCardS()) {
                             Sadiks_Cards.addAll(computers_battle);
                             Sadiks_Cards.addAll(sadiks_battle);
-                            System.out.println("Sadik won");
+                          lastwinnerS.setText("Sadik won");
+                            middlePanel.add(lastwinnerS);
                         } else {
                             Computers_Cards.addAll(computers_battle);
                             Computers_Cards.addAll(sadiks_battle);
@@ -395,15 +409,14 @@ play.addActionListener(new ButtonListener());
 
                         }
                     }
-
+                System.out.println("______i"+Sadiks_Cards.size());
                     if (Sadiks_Cards.size() == 0) {
 
+                        String sadik = "Sadik has won the battle (-_-)";
+                        lastwinnerS.setText(sadik);
+                        middlePanel.add(lastwinnerS);
 
-                        System.out.println("Sadik has won the battle (-_-)");
-                       //.add(winner1S);
-                        System.out.println("Sadik has won the battle (-_-)");
-                        // sadik_Scores.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
-                        //break;
+
                     } else if (Computers_Cards.size() == 0) {
 
                       winner1S.setText("Computer has won the battle :(");
