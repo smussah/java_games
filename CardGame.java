@@ -5,7 +5,6 @@ import javax.swing.*;
 /**
  * Created by sadik
  * mussah on 4/20/14.
- * final class project
  */
 class CardGame {
     private int SuitS;// hold suits
